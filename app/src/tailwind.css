@@ -1,0 +1,50 @@
+@import "tailwindcss" source(none);
+@source "./**/*.{rs,html,css}";
+
+@utility light {
+    color-scheme: light;
+    --color-bg-front: oklch(100% 0.00 90);
+    --color-bg-back: oklch(97% 0.00 90);
+    --color-contrast: oklch(30% 0.00 90);
+}
+
+@utility dark {
+    color-scheme: dark;
+    --color-bg-front: oklch(31% 0.00 90);
+    --color-bg-back: oklch(25% 0.00 90);
+    --color-contrast: oklch(77% 0.00 90);
+}
+
+:root {
+    @apply light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @apply dark;
+    }
+}
+
+@theme inline {
+    --color-*: initial; /* Remove all existing colors */
+
+    --color-debug-red: oklch(63% 0.23 25);
+    --color-debug-green: oklch(87% 0.28 144);
+    --color-debug-pink: oklch(67% 0.29 341);
+
+    --color-error: oklch(67% 0.21 13);
+    --color-success: oklch(76% 0.18 158);
+
+    --color-bg-front: var(--color-bg-front);
+    --color-bg-back: var(--color-bg-back);
+    --color-contrast: var(--color-contrast);
+}
+
+
+[x-cloak] { display: none !important; }
+
+/* [contenteditable=true]:empty:before{ */
+/*   content: attr(placeholder); */
+/*   pointer-events: none; */
+/*   display: block; /* For Firefox */ */
+/* } */
